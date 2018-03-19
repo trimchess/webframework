@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HP</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+    <link href="lightbox/css/lightbox.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans|Baumans' rel='stylesheet' type='text/css'>
+    
+    <script src="js/vendor/modernizr.min.js"></script>
+    <script src="js/vendor/respond.min.js"></script>
+    
+    <!-- include extern jQuery file but fall back to local file if extern one fails to load !-->
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="js\/vendor\/1.7.2.jquery.min.js"><\/script>')</script>
+    
+    <script src="lightbox/js/lightbox.js"></script>
+    <script src="js/vendor/prefixfree.min.js"></script>
+    <script src="js/vendor/jquery.slides.min.js"></script>
+    <script src="js/script.js"></script>
+    
+    <!--[if lt IE 9]>
+        <style>
+            header
+            {
+                margin: 0 auto 20px auto;
+            }
+            #four_columns .img-item figure span.thumb-screen
+            {
+                display:none;
+            }  
+        </style>
+    <![endif]-->
+      
+    <script>
+    $(function() {
+      $('#slides').slidesjs({	
+        height: 235,
+        navigation: false,
+        pagination: false,
+        effect: {
+          fade: {
+            speed: 400
+          }
+        },
+        callback: {
+            start: function(number)
+            {			
+                $("#slider_content1,#slider_content2,#slider_content3").fadeOut(500);
+            },
+            complete: function(number)
+            {			
+                $("#slider_content" + number).delay(500).fadeIn(1000);
+            }		
+        },
+        play: {
+            active: false,
+            auto: true,
+            interval: 6000,
+            pauseOnHover: false,
+            effect: "fade"
+        }
+      });
+    });
+    </script>
+    
+<script>
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /*loop through a collection of all HTML elements:*/
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /*make an HTTP request using the attribute value as the file name:*/
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /*remove the attribute, and call this function once more:*/
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      }
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /*exit the function:*/
+      return;
+    }
+  }
+}
+</script>     
+    
+  </head>
+  <body>
+    <header>
+        <div class="toggleMobile">
+            <span class="menu1"></span>
+            <span class="menu2"></span>
+            <span class="menu3"></span>
+        </div>
+        <div id="mobileMenu">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="item_1.html">Item_1</a></li>
+            <li><a href="item_2.html">Item_2</a></li>
+            <li><a href="item_3.html">Item_3</a></li>
+          </ul>
+        </div>         
+        <a href="index.html"><h1>Seitenname</h1></a>           
+        <nav>
+          <h2 class="hidden">Our navigation</h2>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="item_1.html">Item_1</a></li>
+            <li><a href="item_2.html">Item_2</a></li>
+            <li><a href="item_3.html">Item_3</a></li>
+        </nav>
+    </header>
+    <section class="container">
+      <h2 class="hidden">Main</h2>
+    </section>
+    <section id="spacer">    
+      <h2 class="hidden">search</h2>          
+      <p>   </p>
+      <div class="search">
+      <!--
+          <form action="#">
+              <input type="text" name="sitesearch" value="Eingabe..."/>
+              <input type="submit" name="start_search" class="button" value="Suchen"/>
+          </form>
+      -->
+      </div>        
+    </section>
